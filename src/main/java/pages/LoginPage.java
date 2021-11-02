@@ -12,6 +12,7 @@ public class LoginPage extends BasePage {
     private static final By PASSWORD_INPUT = By.xpath("//*[@id='password']");
     private static final By LOGIN_BUTTON = By.xpath("//*[@id='login-button']");
     private static final By ERROR_TEXT = By.xpath("//h3");
+    private static final By BOT_LOGO = By.xpath("//*[@class='bot-column']");
 
     public void login(String username, String password) {
         driver.findElement(USERNAME_INPUT).sendKeys(username);
@@ -21,5 +22,19 @@ public class LoginPage extends BasePage {
 
     public String getErrorMessage() {
         return driver.findElement(ERROR_TEXT).getText();
+    }
+
+    public void waitForPageToOpen() {
+        waitForElementLocated(BOT_LOGO, 10);
+    }
+
+    public void typeTextInIframe() {
+        driver.switchTo().frame(driver.findElement(By.id("mce_0_ifr")));
+        driver.findElement(By.id("tinymce")).click();
+        driver.switchTo().defaultContent();
+    }
+
+    public void fileUpload(String filePath) {
+        driver.findElement(By.xpath("//input[@id='file_upload']")).sendKeys(filePath);
     }
 }

@@ -17,6 +17,7 @@ public class BaseTest {
     DetailsPage detailsPage;
     CheckoutPage checkoutPage;
     OverviewPage overviewPage;
+    LoginPageFactory loginPageFactory;
 
     @BeforeMethod
     public void initTest() {
@@ -27,6 +28,7 @@ public class BaseTest {
         loginPage = new LoginPage(driver);
         productsPage = new ProductsPage(driver);
         cartPage = new CartPage(driver);
+        loginPageFactory = new LoginPageFactory(driver);
         detailsPage = new DetailsPage(driver);
         checkoutPage = new CheckoutPage(driver);
         overviewPage = new OverviewPage(driver);
