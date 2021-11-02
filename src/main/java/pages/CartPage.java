@@ -9,8 +9,23 @@ public class CartPage extends BasePage {
     }
 
     private static final String PRODUCT_PRICE = "//*[text()='%s']/ancestor::*[@class='cart_item']//*[@class='inventory_item_price']";
+    private static final String DELETE_PRODUCT_BTN = "//*[text()='%s']/ancestor::*[@class='cart_item']//button";
+    private static final By CART_QUANTITY = By.xpath("//*[@class='cart_quantity']");
+    private static final By CHECKOUT_BTN = By.xpath("//*[@class='btn btn_action btn_medium checkout_button']");
 
     public String getProductPrice(String productName) {
        return driver.findElement(By.xpath(String.format(PRODUCT_PRICE, productName))).getText();
+    }
+
+    public void deleteProductFromCart(String productName) {
+        driver.findElement(By.xpath(String.format(DELETE_PRODUCT_BTN, productName))).click();
+    }
+
+    public String getQuantityOfProduct() {
+        return driver.findElement(CART_QUANTITY).getText();
+    }
+
+    public void clickCheckoutBtn() {
+        driver.findElement(CHECKOUT_BTN).click();
     }
 }
