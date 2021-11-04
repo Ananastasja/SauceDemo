@@ -11,45 +11,45 @@ public class CheckoutTest extends BaseTest{
 
     @Test
     public void fillingFormWithValidCredentialsTest() {
-        loginPage.openPage("https://www.saucedemo.com/");
-        loginPage.login("standard_user", "secret_sauce");
-        productsPage.addProductToCart("Sauce Labs Bolt T-Shirt");
-        productsPage.openPage("https://www.saucedemo.com/cart.html");
-        cartPage.clickCheckoutBtn();
-        checkoutPage.fillingCheckoutForm("Anna", "Ivanova", "123456");
-        overviewPage.findFinishBtn();
+        loginPage.openLoginPage()
+                .login("standard_user", "secret_sauce")
+                .addProductToCart("Sauce Labs Bolt T-Shirt");
+        cartPage.openCartPage()
+                .clickCheckoutBtn()
+                .fillingCheckoutForm("Anna", "Ivanova", "123456");
+        Assert.assertTrue(overviewPage.isFinishBtnDisplayed());
     }
 
     @Test
     public void fillingFormWithoutNameTest() {
-        loginPage.openPage("https://www.saucedemo.com/");
-        loginPage.login("standard_user", "secret_sauce");
-        productsPage.addProductToCart("Sauce Labs Bolt T-Shirt");
-        productsPage.openPage("https://www.saucedemo.com/cart.html");
-        cartPage.clickCheckoutBtn();
-        checkoutPage.fillingCheckoutForm("", "Ivanova", "123456");
+        loginPage.openLoginPage()
+                .login("standard_user", "secret_sauce")
+                .addProductToCart("Sauce Labs Bolt T-Shirt");
+        cartPage.openCartPage()
+                .clickCheckoutBtn()
+                .fillingCheckoutForm("", "Ivanova", "123456");
         Assert.assertEquals(checkoutPage.getErrorText(), ERROR_FIRST_NAME);
     }
 
     @Test
     public void fillingFormWithoutSurnameTest() {
-        loginPage.openPage("https://www.saucedemo.com/");
-        loginPage.login("standard_user", "secret_sauce");
-        productsPage.addProductToCart("Sauce Labs Bolt T-Shirt");
-        productsPage.openPage("https://www.saucedemo.com/cart.html");
-        cartPage.clickCheckoutBtn();
-        checkoutPage.fillingCheckoutForm("Anna", "", "123456");
+        loginPage.openLoginPage()
+                .login("standard_user", "secret_sauce")
+                .addProductToCart("Sauce Labs Bolt T-Shirt");
+        cartPage.openCartPage()
+                .clickCheckoutBtn()
+                .fillingCheckoutForm("Anna", "", "123456");
         Assert.assertEquals(checkoutPage.getErrorText(), ERROR_LAST_NAME);
     }
 
     @Test
     public void fillingFormWithoutZipTest() {
-        loginPage.openPage("https://www.saucedemo.com/");
-        loginPage.login("standard_user", "secret_sauce");
-        productsPage.addProductToCart("Sauce Labs Bolt T-Shirt");
-        productsPage.openPage("https://www.saucedemo.com/cart.html");
-        cartPage.clickCheckoutBtn();
-        checkoutPage.fillingCheckoutForm("Anna", "Ivanova", "");
+        loginPage.openLoginPage()
+                .login("standard_user", "secret_sauce")
+                .addProductToCart("Sauce Labs Bolt T-Shirt");
+        cartPage.openCartPage()
+                .clickCheckoutBtn()
+                .fillingCheckoutForm("Anna", "Ivanova", "");
         Assert.assertEquals(checkoutPage.getErrorText(), ERROR_ZIP);
     }
 }

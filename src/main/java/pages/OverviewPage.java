@@ -10,7 +10,9 @@ public class OverviewPage extends CheckoutPage{
 
     private static final By FINISH_BTN = By.xpath("//*[@data-test='finish']");
 
-    public void findFinishBtn() {
+    public boolean isFinishBtnDisplayed() {
+        waitForElementLocated(FINISH_BTN, 5);
         driver.findElement(FINISH_BTN).isDisplayed();
+        return false;
     }
 }
