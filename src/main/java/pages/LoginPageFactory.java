@@ -34,7 +34,4 @@ public class LoginPageFactory extends BasePage{
     public void waitForPageOpened() {
         waitForElementLocated(botLogo, 10);
     }
-
-
-
 }

@@ -14,22 +14,27 @@ public class ProductsPage extends BasePage {
     private static final String PRODUCTS_PAGE_IMG = "//*[text()='%s']/ancestor::*[@class='inventory_item']//img";
     private static final String PRODUCT_NAME = "//*[text()='%s']/ancestor::*[@class='inventory_item']";
 
-    public void addProductToCart(String productName) {
+    public ProductsPage addProductToCart(String productName) {
         waitForElementLocated(driver.findElement(By.xpath(String.format(ADD_PRODUCT_TO_CART_BUTTON, productName))), 10);
         WebElement addProductToCartButton = driver.findElement(By.xpath(String.format(ADD_PRODUCT_TO_CART_BUTTON, productName)));
         addProductToCartButton.click();
-
+        return this;
     }
 
     public String getNumberOfItemsInCart() {
         return driver.findElement(CART_ICON_QUANTITY).getText();
     }
 
-    public void openDetailsPage(String productName) {
+    public DetailsPage openDetailsPage(String productName) {
         driver.findElement(By.xpath(String.format(PRODUCTS_PAGE_IMG, productName))).click();
+        return new DetailsPage(driver);
     }
 
     public String getProductName(String productName) {
         return driver.findElement(By.xpath(String.format(PRODUCT_NAME, productName))).getText();
+    }
+
+    public String getProductPageUrl() {
+        return getCurrentUrl();
     }
 }

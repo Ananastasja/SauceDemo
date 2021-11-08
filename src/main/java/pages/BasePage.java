@@ -18,9 +18,14 @@ public class BasePage {
         PageFactory.initElements(driver, this);
     }
 
-    public void openPage(String url) {
-        driver.get(url);
-        //waitForPageLoaded();
+    public static final String BASE_URL = "https://www.saucedemo.com";
+
+    public String getCurrentUrl() {
+        return driver.getCurrentUrl();
+    }
+
+    public void openUrl(String certainUrl) {
+        driver.get(BASE_URL + certainUrl);
     }
 
     public void waitForElementLocated(By element, int timeout) {
