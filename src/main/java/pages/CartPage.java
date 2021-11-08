@@ -15,7 +15,7 @@ public class CartPage extends BasePage {
     private static final String CART_URL = BASE_URL + "/cart.html";
 
     public CartPage openCartPage() {
-        driver.get(CART_URL);
+        openUrl(CART_URL);
         return this;
     }
 

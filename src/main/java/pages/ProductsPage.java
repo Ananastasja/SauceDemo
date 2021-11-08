@@ -35,6 +35,6 @@ public class ProductsPage extends BasePage {
     }
 
     public String getProductPageUrl() {
-        return driver.getCurrentUrl();
+        return getCurrentUrl();
     }
 }

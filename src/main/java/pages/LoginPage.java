@@ -15,7 +15,7 @@ public class LoginPage extends BasePage {
     private static final By BOT_LOGO = By.xpath("//*[@class='bot-column']");
 
     public LoginPage openLoginPage() {
-        driver.get(BASE_URL);
+        openUrl("");
         return this;
     }
 
