@@ -10,7 +10,6 @@ import pages.*;
 
 import java.util.concurrent.TimeUnit;
 
-@Listeners(TestListener.class)
 public class BaseTest {
     WebDriver driver;
     LoginPage loginPage;

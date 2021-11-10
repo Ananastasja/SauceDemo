@@ -1,3 +1,47 @@
+#### **1. Updates:**
+
+   1.1. Command for possible updates: mvn versions:display-dependency-updates 
+    
+   _Output_: 
+    
+   [INFO] The following dependencies in Dependencies have newer versions:
+                                                                     
+   [INFO]   org.seleniumhq.selenium:selenium-java .............. 3.141.59 -> 4.0.0
+
+   1.2. Command to update: mvn versions:use-latest-versions
+
+   _Output_:
+    
+   [INFO] Major version changes allowed
+    
+   [INFO] Updated org.seleniumhq.selenium:selenium-java:jar:3.141.59 to version 4.0.0
+
+___
+#### **2. Mvn clean test**
+ 
+   _Output_:
+ 
+   [INFO] Tests run: 17, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 75.34 s - in TestSuite
+    
+___
+#### **3. Command for running a certain test class:**
+
+mvn clean -Dtest=DetailsTest test
+
+**Command for running a certain test method:**
+
+mvn clean -Dtest=DetailsTest#comparePriceOnDetailsPageTest test
+
+**Command for running several test methods:**
+
+mvn clean -Dtest=DetailsTest#comparePriceOnDetailsPageTest+compareNameOnDetailsPageTest test
+
+___
+#### **4. Command for parameters:**
+
+mvn clean -Dtest=LoginTest#loginWithValidCredentialsTest -Dusername=standard_user -Dpassword=secret_sauce test
+
+___
 **Checklist to website https://www.saucedemo.com/**
 
 1. Login (positive/negative tests) > checking the error message (for negative tests)
