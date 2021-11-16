@@ -5,7 +5,7 @@ import org.testng.annotations.Test;
 
 public class CartTests extends BaseTest {
 
-    @Test(dataProvider = "User data", dataProviderClass = DataProviderTest.class)
+    @Test
     public void addProductToCartTest(String username, String password, String productName, String expectedPrice) {
         loginPage.openLoginPage()
                 .login(username, password)
