@@ -3,7 +3,7 @@ package tests;
 import org.testng.Assert;
 import org.testng.annotations.Test;
 
-public class CheckoutTest extends BaseTest{
+public class CheckoutTest extends BaseTest {
 
     private static final String ERROR_FIRST_NAME = "Error: First Name is required";
     private static final String ERROR_LAST_NAME = "Error: Last Name is required";
@@ -11,8 +11,8 @@ public class CheckoutTest extends BaseTest{
 
     @Test
     public void fillingFormWithValidCredentialsTest() {
-        loginPage.openLoginPage()
-                .login("standard_user", "secret_sauce")
+        loginPage.openLoginPage();
+        loginPage.login("standard_user", "secret_sauce")
                 .addProductToCart("Sauce Labs Bolt T-Shirt");
         cartPage.openCartPage()
                 .clickCheckoutBtn()

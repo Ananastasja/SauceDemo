@@ -1,5 +1,6 @@
 package pages;
 
+import io.qameta.allure.Step;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 
@@ -14,8 +15,9 @@ public class CartPage extends BasePage {
     private static final By CHECKOUT_BTN = By.xpath("//*[@class='btn btn_action btn_medium checkout_button']");
     private static final String CART_URL = BASE_URL + "/cart.html";
 
+    @Step("Opening Cart Page")
     public CartPage openCartPage() {
-        openUrl(CART_URL);
+        driver.get(CART_URL);
         return this;
     }
 

@@ -9,10 +9,8 @@ public class CartTests extends BaseTest {
     @Test
     @Description("Add product to cart")
     public void addProductToCartTest() {
-        loginPage.openLoginPage()
-                .login("standard_user", "secret_sauce")
-                .addProductToCart("Sauce Lab T-Shirt");
+        productSteps.loginAndAddProductToCart("standard_user", "secret_sauce", "Sauce Labs Bolt T-Shirt");
         cartPage.openCartPage();
-        Assert.assertEquals(cartPage.getProductPrice("Sauce Lab T-Shirt"), "15,99");
+        Assert.assertEquals(cartPage.getProductPrice("Sauce Labs Bolt T-Shirt"), "17,99");
     }
 }

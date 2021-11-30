@@ -25,8 +25,6 @@ public class BasePage {
         return driver.getCurrentUrl();
     }
 
-
-    @Step("Opening URL: '{certainUrl}'")
     public void openUrl(String certainUrl) {
         driver.get(BASE_URL + certainUrl);
     }
