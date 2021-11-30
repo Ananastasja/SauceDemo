@@ -41,7 +41,7 @@ public class LoginTest extends BaseTest {
     @Test
     public void loginWithValidCredentialsTest() {
         loginPage.openLoginPage()
-                .login(System.getProperty("username"), System.getProperty("password"));
+                .login(System.getenv("username"), System.getenv("password"));
         Assert.assertEquals(productsPage.getProductPageUrl(), PRODUCTS_URL);
     }
 }
