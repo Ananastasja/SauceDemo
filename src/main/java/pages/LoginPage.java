@@ -5,6 +5,7 @@ import lombok.extern.log4j.Log4j2;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 
+@Log4j2
 public class LoginPage extends BasePage {
     public LoginPage(WebDriver driver) {
         super(driver);
@@ -23,8 +24,14 @@ public class LoginPage extends BasePage {
 
     @Step("Login as username: '{username}' with password: '{password}'")
     public ProductsPage login(String username, String password) {
+        log.info(String.format("Type text: '%s' into username input on Login page", username));
+        log.debug("Locator is: " + USERNAME_INPUT);
         driver.findElement(USERNAME_INPUT).sendKeys(username);
+        log.info(String.format("Type text: '%s' into password input on Login page", password));
+        log.debug("Locator is: " + PASSWORD_INPUT);
         driver.findElement(PASSWORD_INPUT).sendKeys(password);
+        log.info("Click 'Login' button on Login page");
+        log.debug("Locator is: " + LOGIN_BUTTON);
         driver.findElement(LOGIN_BUTTON).click();
         return new ProductsPage(driver);
     }

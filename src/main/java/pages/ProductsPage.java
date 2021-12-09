@@ -1,9 +1,11 @@
 package pages;
 
+import lombok.extern.log4j.Log4j2;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 
+@Log4j2
 public class ProductsPage extends BasePage {
     public ProductsPage(WebDriver driver) {
         super(driver);
@@ -16,6 +18,8 @@ public class ProductsPage extends BasePage {
 
     public ProductsPage addProductToCart(String productName) {
         waitForElementLocated(driver.findElement(By.xpath(String.format(ADD_PRODUCT_TO_CART_BUTTON, productName))), 10);
+        log.info("Add product to cart with name: " + productName);
+        log.debug("Locator is: " + ADD_PRODUCT_TO_CART_BUTTON);
         WebElement addProductToCartButton = driver.findElement(By.xpath(String.format(ADD_PRODUCT_TO_CART_BUTTON, productName)));
         addProductToCartButton.click();
         return this;
@@ -26,6 +30,8 @@ public class ProductsPage extends BasePage {
     }
 
     public DetailsPage openDetailsPage(String productName) {
+        log.info("Open product details page for: " + productName);
+        log.debug("Locator is: " + PRODUCTS_PAGE_IMG);
         driver.findElement(By.xpath(String.format(PRODUCTS_PAGE_IMG, productName))).click();
         return new DetailsPage(driver);
     }
