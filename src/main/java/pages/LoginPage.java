@@ -1,6 +1,7 @@
 package pages;
 
 import io.qameta.allure.Step;
+import lombok.extern.log4j.Log4j2;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 
@@ -19,7 +20,6 @@ public class LoginPage extends BasePage {
         openUrl("");
         return this;
     }
-
 
     @Step("Login as username: '{username}' with password: '{password}'")
     public ProductsPage login(String username, String password) {
